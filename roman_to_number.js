@@ -19,9 +19,13 @@ var romanToInt = function (s) {
 
   for (let i = 0; i < s.length; i++) {
     const val = sValues[s[i]];
-    const negVal = Object.keys(posNegs).includes(s[i]) && posNegs[s[i]].includes(s[i + 1]);
+    const negVal = Object.keys(posNegs).includes(s[i]) &&
+      (posNegs[s[i]][0] === (s[i + 1]) || posNegs[s[i]][1] === (s[i + 1])); //the current char is negative when the next char is one of 2 values
     total = negVal ? total - val : total + val;
   }
 
   return total;
 };
+
+const result = romanToInt('IV');
+console.log(result);
